@@ -6,11 +6,14 @@ import Hero from "../components/Hero/Hero"
 import ServicesSection from "../components/ServicesSection/ServicesSection"
 
 const IndexPage = () => (
+  <>
+  <SEO title="Komputronik Opole" />
   <Layout>
     <Nav />
     <Hero />
     <ServicesSection />
   </Layout>
+  </>
 )
 
 export default IndexPage

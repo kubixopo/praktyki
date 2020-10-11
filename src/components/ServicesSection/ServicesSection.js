@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React from "react"
 import styled from "styled-components"
 import { Data } from "../../Data/ServicesSectionData"
 import { theme } from "../../Utils/theme"
@@ -15,12 +15,21 @@ const StyledWrapper = styled.section`
 const CardWrapper = styled.div`
   display: grid;
   width: inherit;
-  grid-template-columns: repeat(auto-fit, minmax(auto, 600px));
-  row-gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(auto, 460px));
+  grid-gap: 40px;
+
+  ${({theme}) => theme.mq.big} {
+    grid-template-columns: repeat(auto-fit, 600px);
+  }
 `
 
 const Title = styled(StyledTitle)`
-  padding: 30px 0px;
+  padding-bottom: 30px;
+
+  ${({theme}) => theme.mq.tablet} {
+    padding-bottom: 50px;
+  }
+
 `
 
 const ServicesSection = () => {
@@ -29,7 +38,7 @@ const ServicesSection = () => {
       <Title>Usługi Serwisowe</Title>
       <CardWrapper>
         {Data.map(item => (
-          <Card {...item} />
+          <Card {...item} key={item.title}/>
         ))}
       </CardWrapper>
     </StyledWrapper>

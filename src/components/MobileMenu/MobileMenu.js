@@ -22,6 +22,10 @@ const MenuLink = styled.p`
   font-weight: 700;
   font-size: ${({ theme }) => theme.font.mobile.medium};
   margin-top: 40px;
+
+  ${({theme}) => theme.mq.tablet} {
+    font-size: ${({theme}) => theme.font.mobile.large};
+  }
 `
 
 const MenuItems = ["Galeria", "Usługi Serwisowe", "Kontakt"]
