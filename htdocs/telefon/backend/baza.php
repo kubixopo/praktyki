@@ -9,24 +9,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 
-
-
-
 <body>
 
-
-
-
-
     <?php
-
 $dbhost = 'localhost';
 $dbuser = 'root';
 $dbpass = '';
 $dbname = 'telefon';
 
 $conn = new mysqli($dbhost,$dbuser,$dbpass,$dbname);
-
+// USUWANIE
 if(isset($_GET['p'])) {
     if($_GET['p'] == "usun") {
         $id = $_GET['id'];
@@ -36,16 +28,28 @@ if(isset($_GET['p'])) {
     
 }
 
+// USUWANIE
+// PRZENOSZENIE
 if(isset($_GET['p'])) {
-    if($_GET['p'] == "drukuj") {
+    if($_GET['p'] == "przenies") {
         $id = $_GET['id'];
-        $conn->query("SELECT FROM informacje_o_kliencie WHERE id=$id");
-        
+        $conn->query("INSERT INTO archiwum SELECT * FROM informacje_o_kliencie WHERE id = $id;");
+        $conn->query("DELETE FROM informacje_o_kliencie WHERE id=$id;");
         // header("refresh: 0; url =baza.php"); 
     } 
     
 }
-
+// PRZENOSZENIE
+// DRUKOWANIE
+if(isset($_GET['p'])) {
+    if($_GET['p'] == "drukuj") {
+        $id = $_GET['id'];
+        
+         header("refresh: 0; url=drukowanie.php");
+    } 
+    
+}
+// DRUKOWANIE
 ?>
 
         <table>
