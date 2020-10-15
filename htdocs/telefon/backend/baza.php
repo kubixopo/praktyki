@@ -23,19 +23,20 @@ if(isset($_GET['p'])) {
     if($_GET['p'] == "usun") {
         $id = $_GET['id'];
         $conn->query("DELETE FROM informacje_o_kliencie WHERE id=$id");
-        // header("refresh: 0; url =baza.php"); 
+         
     } 
     
 }
 
 // USUWANIE
 // PRZENOSZENIE
+
 if(isset($_GET['p'])) {
     if($_GET['p'] == "przenies") {
         $id = $_GET['id'];
         $conn->query("INSERT INTO archiwum SELECT * FROM informacje_o_kliencie WHERE id = $id;");
         $conn->query("DELETE FROM informacje_o_kliencie WHERE id=$id;");
-        // header("refresh: 0; url =baza.php"); 
+        
     } 
     
 }
@@ -79,7 +80,8 @@ if(isset($_GET['p'])) {
 
                     <td><input onclick="window.location ='?p=usun&id=<?php echo $row['id']; ?>'" type="button" value="Usuń" /></td>
                     <td><input onclick="window.location ='?p=przenies&id=<?php echo $row['id']; ?>'" type="button" value="Przenieś do archiwum" /></td>
-                    <td><input onclick="window.location ='?p=drukuj&id=<?php echo $row['id']; ?>'" type="button" value="Drukuj" /></td>
+                   <?php echo $row['id']; ?>'" type="button" value="Drukuj" /></td> -->
+                <td>    <a href="drukowanie.php?id=<?php echo $row['id']; ?>">Drukuj</a></td>
                 </tr>
                 <?php
                 
@@ -87,7 +89,7 @@ if(isset($_GET['p'])) {
             
             ?>
         </table>
-        <!-- <button id="but" type="button" href='../stronaglowna/index.php'>Powrót</button> -->
+       
 
         <?php
 
