@@ -34,7 +34,7 @@ const Title = styled(StyledTitle)`
 
 const ServicesSection = () => {
   return (
-    <StyledWrapper>
+    <StyledWrapper id="ServicesSection">
       <Title>Usługi Serwisowe</Title>
       <CardWrapper>
         {Data.map(item => (

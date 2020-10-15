@@ -1,6 +1,8 @@
 import styled from "styled-components"
+import { Link } from "gatsby"
 import React from "react"
 import { theme } from "../../Utils/theme"
+import { Link as LinkScroll} from "react-scroll"
 
 const StyledWrapper = styled.nav`
   position: fixed;
@@ -18,7 +20,7 @@ const StyledWrapper = styled.nav`
   transition: transform 0.35s ease-in-out;
 `
 
-const MenuLink = styled.p`
+const MenuLink = styled(LinkScroll)`
   font-weight: 700;
   font-size: ${({ theme }) => theme.font.mobile.medium};
   margin-top: 40px;
@@ -28,14 +30,34 @@ const MenuLink = styled.p`
   }
 `
 
-const MenuItems = ["Galeria", "Usługi Serwisowe", "Kontakt"]
+const StyledLink = styled(Link) `
+  font-weight: 700;
+  text-decoration: none;
+  font-size: ${({ theme }) => theme.font.mobile.medium};
+  color: ${({ theme }) => theme.colors.primary};
+  margin-top: 40px;
 
-const MobileMenu = ({ isOpen }) => {
+  ${({theme}) => theme.mq.tablet} {
+    font-size: ${({theme}) => theme.font.mobile.large};
+  }
+`
+
+const MobileMenu = ({ isOpen, openMenu}) => {
+
   return (
     <StyledWrapper isOpen={isOpen}>
-      {MenuItems.map(item => (
-        <MenuLink key={item}>{item}</MenuLink>
-      ))}
+          <StyledLink to="/galeria">Galeria</StyledLink>
+          <MenuLink
+          to="ServicesSection"
+          smooth={true}
+          offset={-100}
+          duration={500} 
+          onClick={openMenu}>Usługi Serwisowe</MenuLink>
+        <MenuLink
+          to="ContactSection"
+          smooth={true}
+          duration={500}
+          onClick={openMenu}>Kontakt</MenuLink>
     </StyledWrapper>
   )
 }
